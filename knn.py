@@ -10,7 +10,7 @@ def euclidean_distance(a, b):
     return math.sqrt(sum_squared_distance)
 
 
-def knn(product_vectors, user_vector, k):
+def k_nearest_indices(product_vectors, user_vector, k):
 
     # product vectors are say [[xx, xx,.., xx, xx], [xx, xx,.., xx, xx], ....., [xx, xx,.., xx, xx]]
     # user vector is say [xx, xx,.., xx, xx]
@@ -21,6 +21,6 @@ def knn(product_vectors, user_vector, k):
         distance = euclidean_distance(vector, user_vector)
         dist_and_indices.append((distance, index))
     dist_and_indices.sort()
-    return dist_and_indices[:k]
+    return [i[1] for i in dist_and_indices[:k]]
 
 
