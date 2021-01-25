@@ -18,6 +18,7 @@ def parser(raw_data):
 
 
 def nearest(prod_attr, user_attr):
+    k = 5
     pass
 
 

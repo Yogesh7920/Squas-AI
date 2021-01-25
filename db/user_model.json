@@ -1,5 +1,5 @@
 {
-  "shirt": ["neck", "shoulder", "chest", "stomach"],
+  "shirt": ["neck", "shoulder", "chest", "waist"],
   "pant": ["thigh", "leg"],
   "hat": ["head"],
   "shoe": ["leg"]
