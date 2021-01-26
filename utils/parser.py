@@ -1,3 +1,4 @@
+from matplotlib import colors
 
 def sizechart(size):
     # From Levi's shirt sizechart measurements
@@ -17,14 +18,7 @@ def colourencoding(colour):
     :param colour:
     :return: RGB
     """
-    return {
-        'red': 0,
-        'blue': 1,
-        'green': 2,
-        'white': 3,
-        'black': 4,
-    }.get(colour, -1)
-
+    return dict(zip(('R', 'G', 'B'), colors.to_rgb(colour)))
 
 def brandencoding(brand):
     return {
@@ -60,8 +54,7 @@ def parser(raw_data):
             dict[key] = encode(key, val)
         prod_attr.append(dict)
     return prod_attr
-
-
+    
 """
 {
 R: 255,
