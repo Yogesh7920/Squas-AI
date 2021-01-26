@@ -4,7 +4,6 @@
 
 import requests
 import json
-import ast
 from knn import k_nearest_indices
 
 def api(name):
