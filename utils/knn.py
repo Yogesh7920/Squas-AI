@@ -24,3 +24,15 @@ def k_nearest_indices(product_vectors, user_vector, k):
     return [i[1] for i in dist_and_indices[:k]]
 
 
+def nearest(prod_attr, user_attr):
+    k = 5
+    # prod_vector and user_vector are to be made
+    # based on prod_attr and user_attr characteristics
+    prod_vector = []
+    user_vector = []
+    k_indices = k_nearest_indices(prod_vector, user_vector, k)
+    nearest_products = []
+    for index in k_indices:
+        nearest_products.append(prod_attr[index])
+    return nearest_products
+

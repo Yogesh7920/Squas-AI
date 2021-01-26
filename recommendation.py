@@ -14,6 +14,8 @@ class Recommendation:
         else:
             self.model = self.create()
 
+        self.cp = keras.callbacks.ModelCheckpoint('recommendation.h5', save_best_only=True)
+
     def create(self):
         model = keras.Sequential()
 
@@ -26,10 +28,9 @@ class Recommendation:
 
         return model
 
-    def train(self, items, chosen):
-        options = len(items)
-        chosen = keras.utils.to_categorical(chosen, options).astype(np.int32)
-        self.model.fit(items, chosen, epochs=5, verbose=0)
+    def train(self, items, likes, epochs=20):
+        es = keras.callbacks.EarlyStopping(patience=epochs//10 + 1, restore_best_weights=True)
+        self.model.fit(items, likes, epochs=epochs, verbose=0, callbacks=[es, self.cp], validation_split=0.1)
 
     def predict(self, items):
         return np.argmax(self.model.predict(items))
