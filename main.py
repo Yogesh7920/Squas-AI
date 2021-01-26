@@ -8,11 +8,11 @@ if __name__ == '__main__':
     name = 't-shirt'
 
     raw_data = api(name)
-    likes = prefer(raw_data)
+    likes = prefer(raw_data)  # [1, 0, 0, 0, 1]
 
     data = parser(raw_data)
     user = get_user_dim()
-    user = user_model(user)
+    user_model = user_model(user)
 
     feat = nearest(data, user)
     rec = Recommendation(len(feat))

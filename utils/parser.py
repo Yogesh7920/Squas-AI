@@ -60,3 +60,12 @@ def parser(raw_data):
             dict[key] = encode(key, val)
         prod_attr.append(dict)
     return prod_attr
+
+
+"""
+{
+R: 255,
+G: 0,
+B: 0
+}
+"""
