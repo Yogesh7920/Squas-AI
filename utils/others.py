@@ -22,11 +22,16 @@ def get_user_dim():
         return user
 
 
-def preprocessing(feat):
+def sizeRemove(feat):
     dimensions = feat.pop('size')
     feat['shoulder'] = dimensions[0]
     feat['chest'] = dimensions[1]
     feat['torso'] = dimensions[2]
-    data = pd.DataFrame(feat)
+    return feat
+
+
+def preprocessing(feats):
+    feats = list(map(sizeRemove, feats))
+    data = pd.DataFrame(feats)
     data.drop(['id', 'name'], axis=1)
     return data.to_numpy()
