@@ -14,7 +14,7 @@ class Recommendation:
         else:
             self.model = self.create()
 
-        self.cp = keras.callbacks.ModelCheckpoint('recommendation.h5', save_best_only=True)
+        self.cp = keras.callbacks.ModelCheckpoint('recommendation.h5')
 
     def create(self):
         model = keras.Sequential()
@@ -24,7 +24,7 @@ class Recommendation:
         model.add(layers.Dense(16, activation='relu'))
         model.add(layers.Dense(1, activation='sigmoid'))
 
-        model.compile(optimizer='adam', loss='binary_crossentropy', metrics=[keras.metrics.Accuracy()])
+        model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
         return model
 
