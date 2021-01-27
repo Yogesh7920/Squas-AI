@@ -48,8 +48,6 @@ def encode(key, val):
         return sizechart(val)
     elif key == 'brand':
         return brandencoding(val)
-    elif key == 'colour':
-        return colourencoding(val)
     else:
         return val
 
@@ -60,7 +58,6 @@ def parser(raw_data):
         dict = {}
         for key, val in data.items():
             dict[key] = encode(key, val)
+        dict = {**dict, **colourencoding(dict.pop('colour', None))}
         prod_attr.append(dict)
     return prod_attr
-
-
