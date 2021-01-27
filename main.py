@@ -5,6 +5,8 @@ from utils.others import api, get_user_dim, user_model, preprocessing
 from utils.parser import parser
 from sklearn.model_selection import train_test_split
 import random
+import pandas as pd
+from sklearn.metrics import classification_report
 
 name = 't-shirt'
 raw_data = api(name)
@@ -16,7 +18,7 @@ def train():
     user = get_user_dim()
     user = user_model(user, name)
 
-    k = 20
+    k = 130
     feat = nearest(data, user, k)
     likes = prefer(feat)
     processed_feat = preprocessing(feat)
@@ -26,25 +28,25 @@ def train():
     rec = Recommendation(processed_feat.shape[1])
     rec.train(X_train, y_train, 60)
 
-    eval = rec.evaluate(X_test, y_test)
-    print("Evaluated: ")
-    print(eval)
+    print(classification_report(y_test, rec.model.predict_classes(X_test)))
 
 
 def test():
     test_data = random.sample(raw_data, 20)
+    csv = pd.DataFrame(test_data)
+    csv.to_csv('test.csv')
     data = parser(test_data)
     user = get_user_dim()
     user = user_model(user, name)
 
-    k = 15
+    k = 20
     feat = nearest(data, user, k)
     # likes = prefer(feat)
     processed_feat = preprocessing(feat)
     rec = Recommendation(processed_feat.shape[1])
 
     best = feat[rec.get_best(processed_feat)]
-    print("\n\n BEST \n ")
+    print("\n\n BEST of test.csv \n ")
     print(best)
 
 

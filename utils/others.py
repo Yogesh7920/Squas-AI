@@ -1,5 +1,6 @@
 import requests
 import json
+import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
@@ -28,6 +29,7 @@ def sizeRemove(feat):
     feat['shoulder'] = dimensions[0]
     feat['chest'] = dimensions[1]
     feat['torso'] = dimensions[2]
+    feat['size_avg'] = np.mean(dimensions)
     return feat
 
 
