@@ -3,11 +3,14 @@ from test.user_preference import prefer
 from utils.knn import nearest
 from utils.others import api, get_user_dim, user_model, preprocessing
 from utils.parser import parser
+from sklearn.model_selection import train_test_split
+import random
 
-if __name__ == '__main__':
-    name = 't-shirt'
+name = 't-shirt'
+raw_data = api(name)
 
-    raw_data = api(name)
+
+def train():
 
     data = parser(raw_data)
     user = get_user_dim()
@@ -16,7 +19,35 @@ if __name__ == '__main__':
     k = 20
     feat = nearest(data, user, k)
     likes = prefer(feat)
-    feat = preprocessing(feat)
+    processed_feat = preprocessing(feat)
 
-    rec = Recommendation(feat.shape[1])
-    rec.train(feat, likes, 60)
+    X_train, X_test, y_train, y_test = train_test_split(processed_feat, likes, test_size=0.2)
+
+    rec = Recommendation(processed_feat.shape[1])
+    rec.train(X_train, y_train, 60)
+
+    eval = rec.evaluate(X_test, y_test)
+    print("Evaluated: ")
+    print(eval)
+
+
+def test():
+    test_data = random.sample(raw_data, 20)
+    data = parser(test_data)
+    user = get_user_dim()
+    user = user_model(user, name)
+
+    k = 15
+    feat = nearest(data, user, k)
+    # likes = prefer(feat)
+    processed_feat = preprocessing(feat)
+    rec = Recommendation(processed_feat.shape[1])
+
+    best = feat[rec.get_best(processed_feat)]
+    print("\n\n BEST \n ")
+    print(best)
+
+
+if __name__ == '__main__':
+    train()
+    test()
