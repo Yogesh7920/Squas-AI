@@ -24,13 +24,13 @@ class Recommendation:
         model.add(layers.Dense(16, activation='relu'))
         model.add(layers.Dense(1, activation='sigmoid'))
 
-        model.compile(optimizer='adam', loss='binary_crossentropy')
+        model.compile(optimizer='adam', loss='binary_crossentropy', metrics=[keras.metrics.Accuracy()])
 
         return model
 
     def train(self, items, likes, epochs=20):
         es = keras.callbacks.EarlyStopping(patience=epochs//10 + 1, restore_best_weights=True)
-        self.model.fit(items, likes, epochs=epochs, verbose=0, callbacks=[es, self.cp], validation_split=0.1)
+        self.model.fit(items, likes, epochs=epochs, callbacks=[es, self.cp], validation_split=0.1)
 
     def predict(self, items):
         return np.argmax(self.model.predict(items))
