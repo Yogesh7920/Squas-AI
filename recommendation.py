@@ -30,10 +30,10 @@ class Recommendation:
 
     def train(self, items, likes, epochs=20):
         es = keras.callbacks.EarlyStopping(patience=epochs//10 + 1, restore_best_weights=True)
-        self.model.fit(items, likes, epochs=epochs, callbacks=[es, self.cp], validation_split=0.1)
+        self.model.fit(items, likes, epochs=epochs, callbacks=[self.cp])
 
     def predict(self, items):
-        return np.argmax(self.model.predict(items))
+        return self.model.predict(items)
 
     def evaluate(self, items, likes):
         return self.model.evaluate(items, likes)

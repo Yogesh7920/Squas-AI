@@ -19,4 +19,4 @@ if __name__ == '__main__':
     feat = preprocessing(feat)
 
     rec = Recommendation(feat.shape[1])
-    rec.train(feat, likes, 30)
+    rec.train(feat, likes, 60)

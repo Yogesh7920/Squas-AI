@@ -1,6 +1,7 @@
 import requests
 import json
 import pandas as pd
+from sklearn.preprocessing import StandardScaler
 
 
 def api(name):
@@ -34,4 +35,6 @@ def preprocessing(feats):
     feats = list(map(sizeRemove, feats))
     data = pd.DataFrame(feats)
     data.drop(['id', 'name'], axis=1)
-    return data.to_numpy()
+    scaler = StandardScaler()
+    data = scaler.fit_transform(data)
+    return data
