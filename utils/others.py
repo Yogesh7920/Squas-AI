@@ -29,5 +29,5 @@ def preprocessing(feat):
     feat['chest'] = dimensions[1]
     feat['torso'] = dimensions[2]
     data = pd.DataFrame(feat)
-    data.drop('id', axis=1)
+    data.drop(['id', 'name'], axis=1)
     return data.to_numpy()
