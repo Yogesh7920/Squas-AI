@@ -24,7 +24,7 @@ class Recommendation:
         model.add(layers.Dense(16, activation='relu'))
         model.add(layers.Dense(1, activation='sigmoid'))
 
-        model.compile(optimizer='adam', loss='binary_crossentropy')
+        model.compile(optimizer='adam', loss='binary_crossentropy', metrics=[keras.metrics.Accuracy()])
 
         return model
 
