@@ -35,6 +35,9 @@ class Recommendation:
     def predict(self, items):
         return np.argmax(self.model.predict(items))
 
+    def evaluate(self, items, likes):
+        return self.model.evaluate(items, likes)
+
     def save(self):
         self.model.save('recommendation.h5')
 
