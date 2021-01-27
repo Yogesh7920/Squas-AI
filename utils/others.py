@@ -24,5 +24,5 @@ def get_user_dim():
 
 def preprocessing(feat):
     data = pd.DataFrame(feat)
-    data.drop('id', axis=1)
+    data.drop(['id', 'name'], axis=1)
     return data.to_numpy()
