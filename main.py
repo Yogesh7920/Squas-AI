@@ -14,5 +14,6 @@ if __name__ == '__main__':
     user = get_user_dim()
     user = user_model(user, name)
     feat = nearest(data, user)
+
     rec = Recommendation(len(feat))
     rec.train(feat, likes, 30)

@@ -33,7 +33,7 @@ def nearest(prod_attr, user_attr):
     k = 5
     prod_vector = []
     user_vector = []
-    for key, dimension in user_attr:
+    for key, dimension in user_attr.items():
         user_vector.append(dimension)
     for products in prod_attr:
         prod_vector.append(products['size'])
