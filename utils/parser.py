@@ -1,5 +1,6 @@
 from matplotlib import colors
 
+
 def sizechart(size):
     # From Levi's shirt sizechart measurements
     # return format [chest, shoulder width, Front length] in cms
@@ -18,7 +19,10 @@ def colourencoding(colour):
     :param colour:
     :return: RGB
     """
+    # print(colour)
     return dict(zip(('R', 'G', 'B'), colors.to_rgb(colour)))
+    # return {'R': 0, 'B': 255, 'G': 0}
+
 
 def brandencoding(brand):
     return {
@@ -38,12 +42,16 @@ def categoryencoding(category):
 
 
 def encode(key, val):
-    return {
-        'name': categoryencoding(val),
-        'size': sizechart(val),
-        'brand': brandencoding(val),
-        'colour': colourencoding(val),
-    }.get(key, val)
+    if key == 'name':
+        return categoryencoding(val)
+    elif key == 'size':
+        return sizechart(val)
+    elif key == 'brand':
+        return brandencoding(val)
+    elif key == 'colour':
+        return colourencoding(val)
+    else:
+        return val
 
 
 def parser(raw_data):
@@ -54,11 +62,5 @@ def parser(raw_data):
             dict[key] = encode(key, val)
         prod_attr.append(dict)
     return prod_attr
-    
-"""
-{
-R: 255,
-G: 0,
-B: 0
-}
-"""
+
+

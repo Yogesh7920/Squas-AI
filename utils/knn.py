@@ -2,6 +2,7 @@ from collections import Counter
 import math
 import numpy as np
 
+
 def euclidean_distance(a, b):
     # a and b are supposed to be vectors of same dimension
     return np.linalg.norm(np.array(a) - np.array(b))
@@ -9,19 +10,19 @@ def euclidean_distance(a, b):
 
 def is_underfit(vector, user_vector):
     for i in range(len(vector)):
-        if(vector[i] < user_vector[i]):
+        if (vector[i] < user_vector[i]):
             return True
     return False
 
-def k_nearest_indices(product_vectors, user_vector, k):
 
+def k_nearest_indices(product_vectors, user_vector, k):
     # product vectors are say [[xx, xx,.., xx, xx], [xx, xx,.., xx, xx], ....., [xx, xx,.., xx, xx]]
     # user vector is say [xx, xx,.., xx, xx]
     # our target is to find top k the nearest vector to user_vector
     # and return them
     dist_and_indices = []
     for index, vector in enumerate(product_vectors):
-        if(is_underfit(vector, user_vector)):
+        if is_underfit(vector, user_vector):
             continue
         distance = euclidean_distance(vector, user_vector)
         dist_and_indices.append((distance, index))
@@ -44,4 +45,3 @@ def nearest(prod_attr, user_attr):
         nearest_products.append(prod_attr[index])
     # nearest_products = those products which are closest to user in terms of dimension
     return nearest_products
-

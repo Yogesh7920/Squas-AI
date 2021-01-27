@@ -1,10 +1,13 @@
 {
   "head": {
   },
-  "shoulder": {
-  } ,
-  "chest": {
+  "neck": {
   },
+
+  "shoulder": 43,
+  "chest": 100,
+  "front": 72,
+
   "waist": {
   },
   "thigh": {

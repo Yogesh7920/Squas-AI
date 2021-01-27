@@ -9,13 +9,13 @@ def api(name):
     return data
 
 
-def user_model(user):
-    with open('db/users.json') as f:
+def user_model(user, item):
+    with open('db/user_model.json') as f:
         model = json.load(f)
-        return {k: model[k] for k in user if k in model}
+        return {k: user[k] for k in model[item]}
 
 
 def get_user_dim():
-    with open('db/users.json') as f:
+    with open('db/user.json') as f:
         user = json.load(f)
         return user
