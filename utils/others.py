@@ -23,8 +23,7 @@ def get_user_dim():
 
 
 def preprocessing(feat):
-    dimensions = feat['size']
-    feat.pop('size')
+    dimensions = feat.pop('size')
     feat['shoulder'] = dimensions[0]
     feat['chest'] = dimensions[1]
     feat['torso'] = dimensions[2]

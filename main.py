@@ -8,7 +8,6 @@ if __name__ == '__main__':
     name = 't-shirt'
 
     raw_data = api(name)
-    likes = prefer(raw_data)
 
     data = parser(raw_data)
     user = get_user_dim()
@@ -16,6 +15,7 @@ if __name__ == '__main__':
 
     k = 20
     feat = nearest(data, user, k)
+    likes = prefer(feat)
     feat = preprocessing(feat)
 
     rec = Recommendation(feat.shape[1])
