@@ -14,7 +14,8 @@ if __name__ == '__main__':
     user = get_user_dim()
     user = user_model(user, name)
 
-    feat = nearest(data, user)
+    k = 20
+    feat = nearest(data, user, k)
     feat = preprocessing(feat)
 
     rec = Recommendation(feat.shape[1])

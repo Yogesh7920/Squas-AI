@@ -29,8 +29,8 @@ def k_nearest_indices(product_vectors, user_vector, k):
     return [i[1] for i in dist_and_indices[:k]]
 
 
-def nearest(prod_attr, user_attr):
-    k = 5
+def nearest(prod_attr, user_attr, k):
+
     prod_vector = []
     user_vector = []
     for key, dimension in user_attr.items():
