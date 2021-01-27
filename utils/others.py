@@ -1,5 +1,6 @@
 import requests
 import json
+import pandas as pd
 
 
 def api(name):
@@ -19,3 +20,9 @@ def get_user_dim():
     with open('db/user.json') as f:
         user = json.load(f)
         return user
+
+
+def preprocessing(feat):
+    data = pd.DataFrame(feat)
+    data.drop('id', axis=1)
+    return data.to_numpy()
