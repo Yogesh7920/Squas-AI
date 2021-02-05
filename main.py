@@ -49,7 +49,9 @@ def test():
     rec = Recommendation(processed_feat.shape[1])
 
     best = feat[rec.get_best(processed_feat)]
-    print("\n\n BEST of test.csv \n ")
+    print("\n\nBEST of test.csv", end='\t')
+    print('id = ', best['id'])
+    print('\n')
     print(best)
 
 
