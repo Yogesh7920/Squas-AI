@@ -4,10 +4,13 @@ import numpy as np
 def prefer1(items):
     res = []
     for item in items:
-        if item['B'] == 1:
-            if item['price'] < 800:
-                res.append(1)
-                continue
+        if item['B'] == 1 and item['price'] < 800:
+            res.append(1)
+            continue
+
+        if item['rating'] > 4.7 and item['num_of_reviews'] > 1000:
+            res.append(1)
+            continue
 
         res.append(0)
 
