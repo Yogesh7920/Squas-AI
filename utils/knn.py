@@ -13,6 +13,7 @@ def is_underfit(vector, user_vector):
             return True
     return False
 
+
 def k_nearest_indices(product_vectors, user_vector, k):
 
     # product vectors are say [[xx, xx,.., xx, xx], [xx, xx,.., xx, xx], ....., [xx, xx,.., xx, xx]]

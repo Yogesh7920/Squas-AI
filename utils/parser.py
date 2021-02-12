@@ -5,35 +5,35 @@ def sizechart(name, size):
     # From Levi's shirt sizechart measurements
     # return format [chest, shoulder width, Front length] in cms
     return {
-        'adidas':{
-            'S': [100.3, 43.2, 72.4],
-            'M': [108, 45.7, 74.9],
-            'L': [115.6, 48.3, 77.5],
-            'XL': [123.2, 49.5, 80],
-            'XXL': [130.8, 52.1, 81.3],
-            },
-        'levis':{
+        'adidas': {
             'S': [100.3, 43.2, 72.4],
             'M': [108, 45.7, 74.9],
             'L': [115.6, 48.3, 77.5],
             'XL': [123.2, 49.5, 80],
             'XXL': [130.8, 52.1, 81.3],
         },
-        'arrow':{
+        'levis': {
             'S': [100.3, 43.2, 72.4],
             'M': [108, 45.7, 74.9],
             'L': [115.6, 48.3, 77.5],
             'XL': [123.2, 49.5, 80],
             'XXL': [130.8, 52.1, 81.3],
         },
-        'hm':{
+        'arrow': {
             'S': [100.3, 43.2, 72.4],
             'M': [108, 45.7, 74.9],
             'L': [115.6, 48.3, 77.5],
             'XL': [123.2, 49.5, 80],
             'XXL': [130.8, 52.1, 81.3],
         },
-        'nike':{
+        'hm': {
+            'S': [100.3, 43.2, 72.4],
+            'M': [108, 45.7, 74.9],
+            'L': [115.6, 48.3, 77.5],
+            'XL': [123.2, 49.5, 80],
+            'XXL': [130.8, 52.1, 81.3],
+        },
+        'nike': {
             'S': [100.3, 43.2, 72.4],
             'M': [108, 45.7, 74.9],
             'L': [115.6, 48.3, 77.5],
@@ -68,14 +68,16 @@ def categoryencoding(category):
     return {
         't-shirt': 0,
         'shirt': 1,
+        'pant': 2,
+        'shoe': 3
     }.get(category, -1)
 
 
-def encode(key, val):
+def encode(key, val, brand):
     if key == 'name':
         return categoryencoding(val)
     elif key == 'size':
-        return sizechart(val)
+        return sizechart(brand, val)
     elif key == 'brand':
         return brandencoding(val)
     else:
@@ -87,7 +89,7 @@ def parser(raw_data):
     for data in raw_data:
         dict = {}
         for key, val in data.items():
-            dict[key] = encode(key, val)
+            dict[key] = encode(key, val, data['brand'])
         dict = {**dict, **colourencoding(dict.pop('colour', None))}
         prod_attr.append(dict)
     return prod_attr
