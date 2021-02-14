@@ -111,6 +111,14 @@ def sizechart(name, size):
             'L': [97],
             'XL': [102],
         },
+        'Calvin Klein': {
+            'XS': [82],
+            'S': [87],
+            'M': [92],
+            'L': [97],
+            'XL': [103],
+
+        },
 
     }.get(name, -1).get(size, -1)
 
