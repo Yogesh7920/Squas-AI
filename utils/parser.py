@@ -43,6 +43,48 @@ def sizechart(name, size):
     }.get(name, -1).get(size, -1)
 
 
+def sizechart(name, size):
+    return {
+        'jockey': {
+            'XS': [67],
+            'S': [77],
+            'M': [87],
+            'L': [97],
+            'XL': [107],
+            'XXL': [117],
+        },
+        'Enamor': {
+            'XS': [81] 
+            'S': [86]
+            'M': [91]
+            'L': [96]
+            'XL': [101]
+        },
+        'Enamor': {
+            'XS': [81] 
+            'S': [86]
+            'M': [91]
+            'L': [96]
+            'XL': [101]
+        },
+        'Enamor': {
+            'XS': [81] 
+            'S': [86]
+            'M': [91]
+            'L': [96]
+            'XL': [101]
+        },
+        'Enamor': {
+            'XS': [81] 
+            'S': [86]
+            'M': [91]
+            'L': [96]
+            'XL': [101]
+        },
+
+    }.get(name, -1).get(size, -1)
+
+
 def colourencoding(colour):
     """
     We will add coding into RGB values thus making more reasonable encoding
