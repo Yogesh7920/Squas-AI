@@ -2,17 +2,17 @@ import requests
 import numpy as np
 
 if __name__ == '__main__':
-    name = 't-shirt'
+    name = 'bra'
     url = 'https://squas-store.herokuapp.com/amazon/'
 
-    for i in range(150):
-        price = np.random.randint(8, 22) * 50
-        size = np.random.choice(['S', 'M', 'L'])
+    for i in range(300):
+        price = np.random.randint(6, 18) * 50
+        size = np.random.choice(['XS', 'S', 'M', 'L', 'XL'])
         rating = round(np.random.uniform(1, 5), 1)
         num_of_reviews = np.random.randint(500, 1500)
-        brand = np.random.choice(['nike', 'adidas', 'hm', 'levis', 'arrow'])
+        brand = np.random.choice(['jockey', 'enamor', 'triumph'])
         discount = round(np.random.uniform(5, 50))
-        colour = np.random.choice(['blue', 'red', 'black', 'white', 'gray', 'yellow'])
+        colour = np.random.choice(['blue', 'red', 'black', 'white', 'green'])
 
         d = {
             'name': name,

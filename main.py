@@ -8,7 +8,7 @@ import random
 import pandas as pd
 from sklearn.metrics import classification_report
 
-name = 't-shirt'
+name = 'bra'
 raw_data = api(name)
 
 

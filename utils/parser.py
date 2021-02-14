@@ -42,52 +42,54 @@ def sizechart_tshirt(name, size):
         },
     }.get(name, -1).get(size, -1)
 
+
 def sizechart_shoe(brand, size):
     # Convert shoe size from UK/IN to Foot Length (in cm)
     return {
-        'adidas'{
-            6: 23.7,
-            7: 25.4,
-            8: 26.2,
-            9: 27.1,
-            10: 27.9,
-            11: 28.8,
+        'adidas': {
+            '6': [23.7],
+            '7': [25.4],
+            '8': [26.2],
+            '9': [27.1],
+            '10': [27.9],
+            '11': [28.8],
         },
-        'nike'{
-            6: 23.7,
-            7: 25.4,
-            8: 26.2,
-            9: 27.1,
-            10: 27.9,
-            11: 28.8,
+        'nike': {
+            '6': [23.7],
+            '7': [25.4],
+            '8': [26.2],
+            '9': [27.1],
+            '10': [27.9],
+            '11': [28.8],
         },
-        'puma'{
-            6: 23.7,
-            7: 25.4,
-            8: 26.2,
-            9: 27.1,
-            10: 27.9,
-            11: 28.8,
+        'puma': {
+            '6': [23.7],
+            '7': [25.4],
+            '8': [26.2],
+            '9': [27.1],
+            '10': [27.9],
+            '11': [28.8],
         },
-        'sketchers'{
-            6: 23.7,
-            7: 25.4,
-            8: 26.2,
-            9: 27.1,
-            10: 27.9,
-            11: 28.8,
+        'levis': {
+            '6': [23.7],
+            '7': [25.4],
+            '8': [26.2],
+            '9': [27.1],
+            '10': [27.9],
+            '11': [28.8],
         },
-        'asics'{
-            6: 23.7,
-            7: 25.4,
-            8: 26.2,
-            9: 27.1,
-            10: 27.9,
-            11: 28.8,
-        }
+        'arrow': {
+            '6': [23.7],
+            '7': [25.4],
+            '8': [26.2],
+            '9': [27.1],
+            '10': [27.9],
+            '11': [28.8],
+        },
     }.get(brand, -1).get(size, -1)
 
-def sizechart(name, size):
+
+def sizechart_bra(name, size):
     return {
         'jockey': {
             'XS': [67],
@@ -97,14 +99,14 @@ def sizechart(name, size):
             'XL': [107],
             'XXL': [117],
         },
-        'Enamor': {
+        'enamor': {
             'XS': [81],
             'S': [86],
             'M': [91],
             'L': [96],
-            'XL': [101],
+            'XL': [101]
         },
-        'Triumph': {
+        'triumph': {
             'XS': [82],
             'S': [87],
             'M': [92],
@@ -133,15 +135,17 @@ def brandencoding(brand):
         'arrow': 2,
         'hm': 3,
         'nike': 4,
-        'puma': 5,
-        'sketchers': 6,
-        'asics': 7,
+        'puma': 3,
+        'jockey': 0,
+        'enamor': 1,
+        'triumph': 2
     }.get(brand, -1)
 
 
 def categoryencoding(category):
     return {
         't-shirt': 0,
+        'tshirt': 0,
         'bra': 1,
         'shoe': 2
     }.get(category, -1)
@@ -155,6 +159,8 @@ def encode(key, val, brand, name):
             return sizechart_tshirt(brand, val)
         elif name == 'shoe':
             return sizechart_shoe(brand, val)
+        elif name == 'bra':
+            return sizechart_bra(brand, val)
         else:
             return val
     elif key == 'brand':
