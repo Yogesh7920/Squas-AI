@@ -72,7 +72,7 @@ def categoryencoding(category):
     }.get(category, -1)
 
 
-def encode(key, val, brand):
+def encode(key, val, brand, name):
     if key == 'name':
         return categoryencoding(val)
     elif key == 'size':
@@ -87,8 +87,10 @@ def parser(raw_data):
     prod_attr = []
     for data in raw_data:
         dict = {}
+        brand = data['brand']
+        name = data['name']
         for key, val in data.items():
-            dict[key] = encode(key, val, data['brand'])
+            dict[key] = encode(key, val, brand , name)
         dict = {**dict, **colourencoding(dict.pop('colour', None))}
         prod_attr.append(dict)
     return prod_attr
