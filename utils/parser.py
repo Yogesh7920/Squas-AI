@@ -1,7 +1,7 @@
 from matplotlib import colors
 
 
-def sizechart(name, size):
+def sizechart_tshirt(name, size):
     # From Levi's shirt sizechart measurements
     # return format [chest, shoulder width, Front length] in cms
     return {
@@ -42,6 +42,50 @@ def sizechart(name, size):
         },
     }.get(name, -1).get(size, -1)
 
+def sizechart_shoe(brand, size):
+    # Convert shoe size from UK/IN to Foot Length (in cm)
+    return {
+        'adidas'{
+            6: 23.7,
+            7: 25.4,
+            8: 26.2,
+            9: 27.1,
+            10: 27.9,
+            11: 28.8,
+        },
+        'nike'{
+            6: 23.7,
+            7: 25.4,
+            8: 26.2,
+            9: 27.1,
+            10: 27.9,
+            11: 28.8,
+        },
+        'puma'{
+            6: 23.7,
+            7: 25.4,
+            8: 26.2,
+            9: 27.1,
+            10: 27.9,
+            11: 28.8,
+        },
+        'sketchers'{
+            6: 23.7,
+            7: 25.4,
+            8: 26.2,
+            9: 27.1,
+            10: 27.9,
+            11: 28.8,
+        },
+        'asics'{
+            6: 23.7,
+            7: 25.4,
+            8: 26.2,
+            9: 27.1,
+            10: 27.9,
+            11: 28.8,
+        }
+    }.get(brand, -1).get(size, -1)
 
 def sizechart(name, size):
     return {
@@ -89,6 +133,9 @@ def brandencoding(brand):
         'arrow': 2,
         'hm': 3,
         'nike': 4,
+        'puma': 5,
+        'sketchers': 6,
+        'asics': 7,
     }.get(brand, -1)
 
 
@@ -104,7 +151,12 @@ def encode(key, val, brand, name):
     if key == 'name':
         return categoryencoding(val)
     elif key == 'size':
-        return sizechart(brand, val)
+        if name == 't-shirt' or name == 'tshirt':
+            return sizechart_tshirt(brand, val)
+        elif name == 'shoe':
+            return sizechart_shoe(brand, val)
+        else:
+            return val
     elif key == 'brand':
         return brandencoding(val)
     else:
