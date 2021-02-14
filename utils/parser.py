@@ -40,7 +40,7 @@ def sizechart(name, size):
             'XL': [123.2, 49.5, 80],
             'XXL': [130.8, 52.1, 81.3],
         },
-    }.get(name[size], -1)
+    }.get(name, -1).get(size, -1)
 
 
 def colourencoding(colour):
