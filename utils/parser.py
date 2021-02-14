@@ -67,9 +67,8 @@ def brandencoding(brand):
 def categoryencoding(category):
     return {
         't-shirt': 0,
-        'shirt': 1,
-        'pant': 2,
-        'shoe': 3
+        'bra': 1,
+        'shoe': 2
     }.get(category, -1)
 
 

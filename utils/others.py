@@ -26,9 +26,6 @@ def get_user_dim():
 
 def sizeRemove(feat):
     dimensions = feat.pop('size')
-    feat['shoulder'] = dimensions[0]
-    feat['chest'] = dimensions[1]
-    feat['torso'] = dimensions[2]
     feat['size_avg'] = np.mean(dimensions)
     return feat
 
@@ -36,7 +33,7 @@ def sizeRemove(feat):
 def preprocessing(feats):
     feats = list(map(sizeRemove, feats))
     data = pd.DataFrame(feats)
-    data.drop(['id', 'name'], axis=1)
+    data.drop(['id'], axis=1)
     scaler = StandardScaler()
     data = scaler.fit_transform(data)
     return data
