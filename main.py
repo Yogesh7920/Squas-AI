@@ -7,8 +7,9 @@ from sklearn.model_selection import train_test_split
 import random
 import pandas as pd
 from sklearn.metrics import classification_report
+from pprint import pprint
 
-name = 'bra'
+name = 't-shirt'
 raw_data = api(name)
 
 
@@ -52,7 +53,7 @@ def test():
     print("\n\nBEST of test.csv", end='\t')
     print('id = ', best['id'])
     print('\n')
-    print(best)
+    pprint(best)
 
 
 if __name__ == '__main__':
