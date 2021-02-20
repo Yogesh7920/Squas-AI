@@ -10,35 +10,35 @@ def sizechart_tshirt(name, size):
             'M': [108, 45.7, 74.9],
             'L': [115.6, 48.3, 77.5],
             'XL': [123.2, 49.5, 80],
-            'XXL': [130.8, 52.1, 81.3],
+            'XS': [130.8, 52.1, 81.3],
         },
         'levis': {
             'S': [100.3, 43.2, 72.4],
             'M': [108, 45.7, 74.9],
             'L': [115.6, 48.3, 77.5],
             'XL': [123.2, 49.5, 80],
-            'XXL': [130.8, 52.1, 81.3],
+            'XS': [130.8, 52.1, 81.3],
         },
         'arrow': {
             'S': [100.3, 43.2, 72.4],
             'M': [108, 45.7, 74.9],
             'L': [115.6, 48.3, 77.5],
             'XL': [123.2, 49.5, 80],
-            'XXL': [130.8, 52.1, 81.3],
+            'XS': [130.8, 52.1, 81.3],
         },
         'hm': {
             'S': [100.3, 43.2, 72.4],
             'M': [108, 45.7, 74.9],
             'L': [115.6, 48.3, 77.5],
             'XL': [123.2, 49.5, 80],
-            'XXL': [130.8, 52.1, 81.3],
+            'XS': [130.8, 52.1, 81.3],
         },
         'nike': {
             'S': [100.3, 43.2, 72.4],
             'M': [108, 45.7, 74.9],
             'L': [115.6, 48.3, 77.5],
             'XL': [123.2, 49.5, 80],
-            'XXL': [130.8, 52.1, 81.3],
+            'XS': [130.8, 52.1, 81.3],
         },
     }.get(name, -1).get(size, -1)
 
@@ -158,6 +158,7 @@ def categoryencoding(category):
         'shoe': 2
     }.get(category, -1)
 
+
 def apparelencoding(apparel):
     return {
             'art-silk': 0,
@@ -182,6 +183,7 @@ def apparelencoding(apparel):
             'wool': 19
     }.get(apparel, -1)
 
+
 def fitencoding(fit):
     return{
         'loose': 0,
@@ -204,14 +206,14 @@ def sleeveencoding(sleeveType):
 def neckLineencoding(name):
     return {
         'Boat-Neck': 0,
-         'button-front': 1,
-         'half-zip': 2,
-         'hooded': 3,
-         'polo': 4,
-         'round-neck': 5,
-         'shawl-collar': 6,
-         'sweetheart': 7,
-         'v-neck': 8
+        'button-front': 1,
+        'half-zip': 2,
+        'hooded': 3,
+        'polo': 4,
+        'round-neck': 5,
+        'shawl-collar': 6,
+        'sweetheart': 7,
+        'v-neck': 8
     }.get(name, -1)
 
 
@@ -235,6 +237,8 @@ def encode(key, val, brand, name):
         return sleeveencoding(val)
     elif key == 'neckLine':
         return neckLineencoding(val)
+    elif key == 'apparel':
+        return apparelencoding(val)
     else:
         return val
 

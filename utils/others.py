@@ -2,7 +2,7 @@ import requests
 import json
 import numpy as np
 import pandas as pd
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler, LabelEncoder
 
 
 def api(**kwargs):
@@ -34,6 +34,8 @@ def preprocessing(feats):
     feats = list(map(sizeRemove, feats))
     data = pd.DataFrame(feats)
     data.drop(['id'], axis=1)
+    # le = LabelEncoder()
+    # data['apparel'] = le.fit_transform(data['apparel'])
     scaler = StandardScaler()
     data = scaler.fit_transform(data)
     return data

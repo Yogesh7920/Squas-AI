@@ -10,7 +10,7 @@ from sklearn.metrics import classification_report
 from pprint import pprint
 
 item = 't-shirt'
-raw_data = api(item=item)
+raw_data = api(item=item, brand='adidas')
 
 
 def train():
