@@ -158,6 +158,22 @@ def categoryencoding(category):
         'shoe': 2
     }.get(category, -1)
 
+def fitencoding(fit):
+    return{
+        'loose': 0,
+        'regular': 1,
+        'slim': 2,
+    }.get(fit, -1)
+
+def sleeveencoding(sleeveType):
+    return {
+        '3/4-sleeve': 0,
+        'cap-sleeve': 1,
+        'half-sleeve': 2,
+        'long-sleeve': 3,
+        'short-sleeve': 4,
+        'sleeveless': 5,
+    }.get(sleeveType, -1)
 
 def encode(key, val, brand, name):
     if key == 'item':
@@ -173,6 +189,10 @@ def encode(key, val, brand, name):
             return val
     elif key == 'brand':
         return brandencoding(val)
+    elif key == 'fit':
+        return fitencoding(val)
+    elif key == 'sleeveType':
+        return sleeveencoding(val)
     else:
         return val
 
