@@ -158,37 +158,37 @@ def categoryencoding(category):
         'shoe': 2
     }.get(category, -1)
 
-<<<<<<< HEAD
 def apparelencoding(apparel):
     return {
-            'art-silk': 0, 
+            'art-silk': 0,
             'chiffon': 1,
             'corduroy': 2,
-            'cotton': 3, 
+            'cotton': 3,
             'crepe': 4,
-            'denim': 5, 
-            'faux-fur': 6, 
-            'fleece': 7, 
-            'fur': 8, 
-            'georgette': 9, 
-            'leather': 10, 
-            'linen': 11, 
-            'modal': 12, 
-            'net': 13, 
-            'rayon': 14, 
+            'denim': 5,
+            'faux-fur': 6,
+            'fleece': 7,
+            'fur': 8,
+            'georgette': 9,
+            'leather': 10,
+            'linen': 11,
+            'modal': 12,
+            'net': 13,
+            'rayon': 14,
             'rubber': 15,
-            'satin': 16, 
-            'silk': 17, 
-            'synthetic': 18, 
-            'wool': 19])
+            'satin': 16,
+            'silk': 17,
+            'synthetic': 18,
+            'wool': 19
     }.get(apparel, -1)
-=======
+
 def fitencoding(fit):
     return{
         'loose': 0,
         'regular': 1,
         'slim': 2,
     }.get(fit, -1)
+
 
 def sleeveencoding(sleeveType):
     return {
@@ -199,6 +199,7 @@ def sleeveencoding(sleeveType):
         'short-sleeve': 4,
         'sleeveless': 5,
     }.get(sleeveType, -1)
+
 
 def neckLineencoding(name):
     return {
@@ -212,7 +213,7 @@ def neckLineencoding(name):
          'sweetheart': 7,
          'v-neck': 8
     }.get(name, -1)
->>>>>>> e6aa242e3e9bdc9ca4544ab943f9ff88d30e13ea
+
 
 def encode(key, val, brand, name):
     if key == 'item':
