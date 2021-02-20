@@ -206,6 +206,8 @@ def encode(key, val, brand, name):
         return fitencoding(val)
     elif key == 'sleeveType':
         return sleeveencoding(val)
+    elif key == 'neckLine':
+        return neckLineencoding(val)
     else:
         return val
 
