@@ -159,6 +159,19 @@ def categoryencoding(category):
     }.get(category, -1)
 
 
+def neckLineencoding(name):
+    return {
+        'Boat-Neck': 0,
+         'button-front': 1,
+         'half-zip': 2,
+         'hooded': 3,
+         'polo': 4,
+         'round-neck': 5,
+         'shawl-collar': 6,
+         'sweetheart': 7,
+         'v-neck': 8
+    }.get(name, -1)
+
 def encode(key, val, brand, name):
     if key == 'item':
         return categoryencoding(val)
