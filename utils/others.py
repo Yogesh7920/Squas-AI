@@ -5,9 +5,9 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
 
-def api(name):
+def api(**kwargs):
     url = 'https://squas-store.herokuapp.com/amazon/'
-    req = requests.get(url, params={'name': name})
+    req = requests.get(url, params=kwargs)
     data = req.json()
     return data
 

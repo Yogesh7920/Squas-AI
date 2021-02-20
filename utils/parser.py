@@ -158,6 +158,7 @@ def categoryencoding(category):
         'shoe': 2
     }.get(category, -1)
 
+<<<<<<< HEAD
 def apparelencoding(apparel):
     return {
             'art-silk': 0, 
@@ -181,9 +182,40 @@ def apparelencoding(apparel):
             'synthetic': 18, 
             'wool': 19])
     }.get(apparel, -1)
+=======
+def fitencoding(fit):
+    return{
+        'loose': 0,
+        'regular': 1,
+        'slim': 2,
+    }.get(fit, -1)
+
+def sleeveencoding(sleeveType):
+    return {
+        '3/4-sleeve': 0,
+        'cap-sleeve': 1,
+        'half-sleeve': 2,
+        'long-sleeve': 3,
+        'short-sleeve': 4,
+        'sleeveless': 5,
+    }.get(sleeveType, -1)
+
+def neckLineencoding(name):
+    return {
+        'Boat-Neck': 0,
+         'button-front': 1,
+         'half-zip': 2,
+         'hooded': 3,
+         'polo': 4,
+         'round-neck': 5,
+         'shawl-collar': 6,
+         'sweetheart': 7,
+         'v-neck': 8
+    }.get(name, -1)
+>>>>>>> e6aa242e3e9bdc9ca4544ab943f9ff88d30e13ea
 
 def encode(key, val, brand, name):
-    if key == 'name':
+    if key == 'item':
         return categoryencoding(val)
     elif key == 'size':
         if name == 't-shirt' or name == 'tshirt':
@@ -196,6 +228,12 @@ def encode(key, val, brand, name):
             return val
     elif key == 'brand':
         return brandencoding(val)
+    elif key == 'fit':
+        return fitencoding(val)
+    elif key == 'sleeveType':
+        return sleeveencoding(val)
+    elif key == 'neckLine':
+        return neckLineencoding(val)
     else:
         return val
 
@@ -205,7 +243,7 @@ def parser(raw_data):
     for data in raw_data:
         dict = {}
         brand = data['brand']
-        name = data['name']
+        name = data['item']
         for key, val in data.items():
             dict[key] = encode(key, val, brand , name)
         dict = {**dict, **colourencoding(dict.pop('colour', None))}
