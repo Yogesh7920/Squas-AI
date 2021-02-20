@@ -9,15 +9,15 @@ import pandas as pd
 from sklearn.metrics import classification_report
 from pprint import pprint
 
-name = 't-shirt'
-raw_data = api(name)
+item = 't-shirt'
+raw_data = api(item=item)
 
 
 def train():
 
     data = parser(raw_data)
     user = get_user_dim()
-    user = user_model(user, name)
+    user = user_model(user, item)
 
     k = 250
     feat = nearest(data, user, k)
@@ -36,7 +36,7 @@ def test():
     test_data = random.sample(raw_data, 50)
     data = parser(test_data)
     user = get_user_dim()
-    user = user_model(user, name)
+    user = user_model(user, item)
 
     k = 40
     feat = nearest(data, user, k)

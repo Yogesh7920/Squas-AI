@@ -160,7 +160,7 @@ def categoryencoding(category):
 
 
 def encode(key, val, brand, name):
-    if key == 'name':
+    if key == 'item':
         return categoryencoding(val)
     elif key == 'size':
         if name == 't-shirt' or name == 'tshirt':
@@ -182,7 +182,7 @@ def parser(raw_data):
     for data in raw_data:
         dict = {}
         brand = data['brand']
-        name = data['name']
+        name = data['item']
         for key, val in data.items():
             dict[key] = encode(key, val, brand , name)
         dict = {**dict, **colourencoding(dict.pop('colour', None))}
