@@ -158,6 +158,29 @@ def categoryencoding(category):
         'shoe': 2
     }.get(category, -1)
 
+def apparelencoding(apparel):
+    return {
+            'art-silk': 0, 
+            'chiffon': 1,
+            'corduroy': 2,
+            'cotton': 3, 
+            'crepe': 4,
+            'denim': 5, 
+            'faux-fur': 6, 
+            'fleece': 7, 
+            'fur': 8, 
+            'georgette': 9, 
+            'leather': 10, 
+            'linen': 11, 
+            'modal': 12, 
+            'net': 13, 
+            'rayon': 14, 
+            'rubber': 15,
+            'satin': 16, 
+            'silk': 17, 
+            'synthetic': 18, 
+            'wool': 19])
+    }.get(apparel, -1)
 
 def encode(key, val, brand, name):
     if key == 'name':
