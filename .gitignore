@@ -1,5 +1,5 @@
 
-*.h5
+users/*.h5
 *.csv
 test/temp.py
 

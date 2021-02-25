@@ -6,17 +6,22 @@ import os
 
 class Recommendation:
 
-    def __init__(self, input_dim, user):
+    def __init__(self, input_dim, user, optimize='bin'):
 
         self.input_dim = input_dim
         self.user = user
         self.model_path = os.path.join('users', user + '.h5')
         if os.path.exists(self.model_path):
             self.model = self.load()
+            print('Loading Model')
         else:
             self.model = self.create()
+            print('creating Model')
 
-        self.model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+        if optimize == 'bin':
+            self.model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+        else:
+            self.model.compile(optimizer='adam', loss='mse', metrics=['mae'])
 
         self.cp = keras.callbacks.ModelCheckpoint(self.model_path, save_best_only=True)
 
