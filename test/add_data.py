@@ -14,19 +14,19 @@ if __name__ == '__main__':
         discount = round(np.random.uniform(5, 50))
         colour = np.random.choice(['blue', 'red', 'black', 'white', 'green'])
         neckLine = np.random.choice([
-            'Boat-Neck', 'button-front', 'half-zip', 'hooded', 'polo',
-            'round-neck', 'shawl-collar', 'sweetheart', 'v-neck'
-        ])
+        'boat neck', 'button front', 'half zip', 'hooded', 'polo',
+        'round neck', 'shawl collar', 'sweetheart', 'v neck'
+    ])
         fit = np.random.choice(['loose', 'regular', 'slim'])
         apparel = np.random.choice([
-            'art-silk', 'chiffon', 'corduroy', 'cotton', 'crepe',
-            'denim', 'faux-fur', 'fleece', 'fur', 'georgette',
-            'leather', 'linen', 'modal', 'net', 'rayon', 'rubber',
-            'satin', 'silk', 'synthetic', 'wool'])
+        'art silk', 'chiffon', 'corduroy', 'cotton', 'crepe',
+        'denim', 'faux fur', 'fleece', 'fur', 'georgette',
+        'leather', 'linen', 'modal', 'net', 'rayon', 'rubber',
+        'satin', 'silk', 'synthetic', 'wool'])
         sleeveType = np.random.choice([
-            '3/4-sleeve', 'cap-sleeve', 'half-sleeve', 'long-sleeve',
-            'short-sleeve', 'sleeveless'
-        ])
+        'cap sleeve', 'half sleeve', 'long sleeve',
+        'short sleeve', 'sleeveless'
+    ])
         deal = np.random.choice([True, False], p = [0.1, 0.9])
 
         d = {

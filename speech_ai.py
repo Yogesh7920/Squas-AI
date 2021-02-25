@@ -39,7 +39,7 @@ def ask_for_apparel():
     apparel = apparel.lower()
     options = [
         'art silk', 'chiffon', 'corduroy', 'cotton', 'crepe',
-        'denim', 'faux-fur', 'fleece', 'fur', 'georgette',
+        'denim', 'faux fur', 'fleece', 'fur', 'georgette',
         'leather', 'linen', 'modal', 'net', 'rayon', 'rubber',
         'satin', 'silk', 'synthetic', 'wool']
     if (apparel in options):
@@ -56,7 +56,7 @@ def ask_for_sleevetype():
     sleeve = hear()
     sleeve = sleeve.lower()
     options = [
-        '3/4 sleeve', 'cap sleeve', 'half sleeve', 'long sleeve',
+        'cap sleeve', 'half sleeve', 'long sleeve',
         'short sleeve', 'sleeveless'
     ]
     if (sleeve in options):
@@ -75,8 +75,14 @@ def interact():
         fit = ask_for_fit()
         neck_line = ask_for_neck_line()
         apparel = ask_for_apparel()
+        # print("#### " + apparel)
         sleeve = ask_for_sleevetype()
-
+    return {
+        'fit':fit,
+        'neckLine':neck_line,
+        'apparel': apparel,
+        'sleeveType': sleeve
+    }
 
 if __name__ == '__main__':
     interact()
