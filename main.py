@@ -6,13 +6,21 @@ from utils.speech import hear, speak
 import os
 
 if __name__ == '__main__':
+    speak("Welcome to Squas T Shirts Virtual Showroom")
     speak("what is the user name?")
     username = hear()
+    username = username.lower()
+    while(username not in ['yogesh', 'gurunadh', 'mitul']):
+        speak("User does not exit in database")
+        username = hear()
+        username = username.lower()
+    
     if(os.path.exists(os.path.join("users", username + ".h5"))):
         mode = 'production'
     else:
         mode = 'development'
 
+    
     query = sr.interact()
 
 

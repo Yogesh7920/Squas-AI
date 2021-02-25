@@ -18,8 +18,8 @@ def user_model(user, item):
         return {k: user[k] for k in model[item]}
 
 
-def get_user_dim():
-    with open('db/user.json') as f:
+def get_user_dim(name):
+    with open(f'db/{name}.json') as f:
         user = json.load(f)
         return user
 

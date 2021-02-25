@@ -26,7 +26,7 @@ class AI:
 
     def preprocessing(self, data, k, dev=True):
         data = parser(data)
-        user = get_user_dim()
+        user = get_user_dim(self.username)
         user = user_model(user, self.item)
         feat = nearest(data, user, k)
         if dev:
