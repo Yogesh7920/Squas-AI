@@ -8,6 +8,7 @@ import random
 import pandas as pd
 from sklearn.metrics import classification_report
 from pprint import pprint
+import numpy as np
 
 item = 't-shirt'
 
@@ -25,7 +26,7 @@ def train(raw_data, username):
     X_train, X_test, y_train, y_test = train_test_split(processed_feat, likes, test_size=0.2)
 
     rec = Recommendation(processed_feat.shape[1], username)
-    rec.train(X_train, y_train, 150)
+    rec.train(X_train, y_train, 80)
 
     print(classification_report(y_test, rec.model.predict_classes(X_test)))
 
@@ -69,6 +70,19 @@ def predict(raw_data, username):
     return best['id']
 
 
+def feedback_train(data, username):
+    data = parser(data)
+    user = get_user_dim()
+    user = user_model(user, item)
+
+    k = 250
+    feat = nearest(data, user, k)
+    likes = np.array([0])
+    processed_feat = preprocessing(feat)
+    rec = Recommendation(processed_feat.shape[1], username)
+    rec.model.fit(processed_feat, likes, epochs=5)
+
+
 if __name__ == '__main__':
     mode = 'development'
     # mode = 'production'
@@ -79,10 +93,10 @@ if __name__ == '__main__':
         test(raw_data, username)
     else:
         best_id = predict(raw_data, username)
-        best_prod = filter(lambda x: x['id'] == best_id, raw_data)
+        best_prod = list(filter(lambda x: x['id'] == best_id, raw_data))[0]
         print(best_prod)
 
         correct = int(input("Is this prediction correct (1/0)"))
 
         if not correct:
-            train([best_prod], username)
+            feedback_train([best_prod], username)
