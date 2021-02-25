@@ -10,11 +10,9 @@ from sklearn.metrics import classification_report
 from pprint import pprint
 
 item = 't-shirt'
-raw_data = api(item=item, brand='adidas')
 
 
-def train():
-
+def train(raw_data, username):
     data = parser(raw_data)
     user = get_user_dim()
     user = user_model(user, item)
@@ -26,13 +24,13 @@ def train():
 
     X_train, X_test, y_train, y_test = train_test_split(processed_feat, likes, test_size=0.2)
 
-    rec = Recommendation(processed_feat.shape[1])
-    rec.train(X_train, y_train, 80)
+    rec = Recommendation(processed_feat.shape[1], username)
+    rec.train(X_train, y_train, 150)
 
     print(classification_report(y_test, rec.model.predict_classes(X_test)))
 
 
-def test():
+def test(raw_data, username):
     test_data = random.sample(raw_data, 50)
     data = parser(test_data)
     user = get_user_dim()
@@ -47,15 +45,44 @@ def test():
     csv.to_csv('test.csv')
 
     processed_feat = preprocessing(feat)
-    rec = Recommendation(processed_feat.shape[1])
+    rec = Recommendation(processed_feat.shape[1], username)
 
     best = feat[rec.get_best(processed_feat)]
     print("\n\nBEST of test.csv", end='\t')
     print('id = ', best['id'])
-    print('\n')
     pprint(best)
 
 
+def predict(raw_data, username):
+    data = parser(raw_data)
+    user = get_user_dim()
+    user = user_model(user, item)
+
+    k = 250
+    feat = nearest(data, user, k)
+    processed_feat = preprocessing(feat)
+    rec = Recommendation(processed_feat.shape[1], username)
+    best = feat[rec.get_best(processed_feat)]
+    # print("\n\nBEST of test.csv", end='\t')
+    # print('id = ', best['id'])
+    # pprint(best)
+    return best['id']
+
+
 if __name__ == '__main__':
-    train()
-    test()
+    mode = 'development'
+    # mode = 'production'
+    username = 'Yogesh'
+    raw_data = api(item=item)
+    if mode == 'development':
+        train(raw_data, username)
+        test(raw_data, username)
+    else:
+        best_id = predict(raw_data, username)
+        best_prod = filter(lambda x: x['id'] == best_id, raw_data)
+        print(best_prod)
+
+        correct = int(input("Is this prediction correct (1/0)"))
+
+        if not correct:
+            train([best_prod], username)

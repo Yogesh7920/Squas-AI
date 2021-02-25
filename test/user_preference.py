@@ -45,6 +45,12 @@ def prefer2(items):
         if item['num_of_reviews'] > 1000:
             like += 1
 
+        if item['neckLine'] == 'polo':
+            like += 2
+
+        if item['deal'] == 'true':
+            like += 2
+
         res.append(like)
 
     return np.array(res) / np.max(res)

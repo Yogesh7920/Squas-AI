@@ -6,15 +6,17 @@ import os
 
 class Recommendation:
 
-    def __init__(self, input_dim):
+    def __init__(self, input_dim, user):
 
         self.input_dim = input_dim
-        if os.path.exists('recommendation.h5'):
+        self.user = user
+        self.model_path = os.path.join('users', user + '.h5')
+        if os.path.exists(self.model_path):
             self.model = self.load()
         else:
             self.model = self.create()
 
-        self.cp = keras.callbacks.ModelCheckpoint('recommendation.h5', save_best_only=True)
+        self.cp = keras.callbacks.ModelCheckpoint(self.model_path, save_best_only=True)
 
     def create(self):
         model = keras.Sequential()
@@ -42,7 +44,7 @@ class Recommendation:
         return self.model.evaluate(items, likes)
 
     def save(self):
-        self.model.save('recommendation.h5')
+        self.model.save(self.model_path)
 
     def load(self):
-        return keras.models.load_model('recommendation.h5')
+        return keras.models.load_model(self.model_path)
