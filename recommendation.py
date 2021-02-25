@@ -16,6 +16,8 @@ class Recommendation:
         else:
             self.model = self.create()
 
+        self.model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
         self.cp = keras.callbacks.ModelCheckpoint(self.model_path, save_best_only=True)
 
     def create(self):
@@ -25,8 +27,6 @@ class Recommendation:
         model.add(layers.Dense(32, activation='relu'))
         model.add(layers.Dense(16, activation='relu'))
         model.add(layers.Dense(1, activation='sigmoid'))
-
-        model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
         return model
 
