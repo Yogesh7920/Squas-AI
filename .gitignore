@@ -1,7 +1,6 @@
 
 users/*.h5
 *.csv
-test/temp.py
 
 
 # Created by .ignore support plugin (hsz.mobi)

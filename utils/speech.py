@@ -13,18 +13,18 @@ def speak(text):
     os.remove(filename)
 
 
-
 def hear():
     r3 = sr.Recognizer()
     with sr.Microphone() as source:
-        print("Speak something")
-        audio = r3.record(source, duration=3)
-        try:
-            txt = r3.recognize_google(audio)
-            print(txt)
-            return txt
-        except:
-            speak("Say now")
-            hear()
+        while True:
+            print("Speak something")
+            audio = r3.record(source, duration=3)
+            try:
+                txt = r3.recognize_google(audio)
+                print(txt)
+                return txt
+            except:
+                speak("Say now")
+
 
 

@@ -1,9 +1,6 @@
 from utils.speech import hear, speak
 
 
-
-
-
 def ask(filter, options):    
     speak(f"what is the {filter} you want?")
     temp = hear()
@@ -28,7 +25,7 @@ def interact():
         print(*filters)
         resp = hear()
         resp = resp.lower()
-        while("skip" not in resp):
+        while("skip" not in resp and "no" not in resp):
             if(resp == "fit"):
                 query["fit"] = ask("fit", ['loose', 'regular', 'slim'])
             elif resp == "neck line" or resp == "neckline":
@@ -57,11 +54,7 @@ def interact():
             resp = hear()
             resp = resp.lower()
 
-
     return query
-
-
-
 
 
 if __name__ == '__main__':
