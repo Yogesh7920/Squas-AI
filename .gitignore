@@ -1,6 +1,7 @@
 
 users/*.h5
 *.csv
+voice.mp3
 
 
 # Created by .ignore support plugin (hsz.mobi)

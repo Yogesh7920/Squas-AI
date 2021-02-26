@@ -14,20 +14,20 @@ if __name__ == '__main__':
         discount = round(np.random.uniform(5, 50))
         colour = np.random.choice(['blue', 'red', 'black', 'white', 'green'])
         neckLine = np.random.choice([
-        'boat neck', 'button front', 'half zip', 'hooded', 'polo',
-        'round neck', 'shawl collar', 'sweetheart', 'v neck'
-    ])
+            'boat neck', 'button front', 'half zip', 'hooded', 'polo',
+            'round neck', 'shawl collar', 'sweetheart', 'v neck'
+        ])
         fit = np.random.choice(['loose', 'regular', 'slim'])
         apparel = np.random.choice([
-        'art silk', 'chiffon', 'corduroy', 'cotton', 'crepe',
-        'denim', 'faux fur', 'fleece', 'fur', 'georgette',
-        'leather', 'linen', 'modal', 'net', 'rayon', 'rubber',
-        'satin', 'silk', 'synthetic', 'wool'])
+            'art silk', 'chiffon', 'corduroy', 'cotton', 'crepe',
+            'denim', 'faux fur', 'fleece', 'fur', 'georgette',
+            'leather', 'linen', 'modal', 'net', 'rayon', 'rubber',
+            'satin', 'silk', 'synthetic', 'wool'])
         sleeveType = np.random.choice([
-        'cap sleeve', 'half sleeve', 'long sleeve',
-        'short sleeve', 'sleeveless'
-    ])
-        deal = np.random.choice([True, False], p = [0.1, 0.9])
+            'cap sleeve', 'half sleeve', 'long sleeve',
+            'short sleeve', 'sleeveless'
+        ])
+        deal = np.random.choice([True, False], p=[0.1, 0.9])
 
         d = {
             'item': name,
@@ -39,10 +39,10 @@ if __name__ == '__main__':
             'discount': discount,
             'colour': colour,
             'neckLine': neckLine,
-            'fit':fit,
-            'apparel':apparel,
-            'sleeveType':sleeveType,
-            'deal':deal
+            'fit': fit,
+            'apparel': apparel,
+            'sleeveType': sleeveType,
+            'deal': deal
         }
 
         r = requests.post(url, data=d)
@@ -77,4 +77,3 @@ if __name__ == '__main__':
 
 #         r = requests.post(url, data=d)
 #         print(i, r.status_code)
-
